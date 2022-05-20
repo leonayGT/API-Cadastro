@@ -3,6 +3,8 @@ const router = express.Router();
 const mysql = require('../mysql').pool
 const multer = require('multer')
 
+
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './uploads')
@@ -52,11 +54,9 @@ router.get('/', (req,res,next)=>{
                         }
                     })
                 }
-                 return res.status(200).send({response})
-                
+                 return res.status(200).send({response})         
             }
-        )
-        
+        )   
     })
 });
 
@@ -68,7 +68,7 @@ router.post('/', upload.single('produto_imagem'), (req,res, next)=>{
       } 
         conn.query(
             'INSERT INTO produtos (nome, preco, imagem_produto) VALUES (?,?,?)',
-            [req.body.nome, req.body.preco, req.file.path ],
+            [req.body.nome, req.body.preco, ],
             (error, result, fields) =>{
                 conn.release()
                 if(error) {
@@ -200,8 +200,6 @@ router.get('/:id_produto', (req,res,next)=>{
                 return res.status(200).send({ response })
             }
         )
-        
     })
 });
-
 module.exports = router

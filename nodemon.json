@@ -4,6 +4,8 @@
         "MYSQL_PASSWORD": "123456",
         "MYSQL_DATABASE": "ecommerce",
         "MYSQL_PORT": 3306,
-        "MYSQL_HOST": "localhost"
+        "MYSQL_HOST": "localhost",
+
+        "JWT_KEY": "segredo"
     }
 }

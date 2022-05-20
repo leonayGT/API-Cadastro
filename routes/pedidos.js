@@ -46,8 +46,7 @@ router.get('/', (req,res,next)=>{
     })
 });
 
-
-router.post('/', (req,res,next)=>{
+router.post('/', (req,res,next) => {
     mysql.getConnection((error, conn)=>{
         if(error) {
             return res.status(500).send({ error: error})
@@ -116,7 +115,7 @@ router.patch('/', (req,res,next)=>{
             return res.status(500).send({ error: error})
         }
         conn.query(
-            'UPDATE pedidos set id_produto = ?, quantidade = ? WHERE id_pedido = ?',
+            'UPDATE pedidos set id_produto= ?, quantidade = ? WHERE id_pedido = ?',
             [req.body.id_produto, req.body.quantidade, req.body.id_pedidos],
             (error, result, fields) => {
                 if(error) {
@@ -140,8 +139,5 @@ router.patch('/', (req,res,next)=>{
         )
     })
 });
-
-
-
 
 module.exports = router
